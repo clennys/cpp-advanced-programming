@@ -1,0 +1,104 @@
+#include "fraction.h"
+#include <cmath>
+#include <cstdlib>
+#include <iostream>
+
+using namespace std;
+
+int gcf(int a, int b) {
+
+  if (a == 0)
+    return a;
+  if (b == 0)
+    return b;
+
+  a = abs(a);
+  b = abs(b);
+
+  while (a != b) {
+    if (a > b)
+      a -= b;
+    else
+      b -= a;
+  }
+  return a;
+}
+
+fraction::fraction(int num, int denom) : numerator(num), denominator(denom) {}
+
+fraction fraction::operator*(fraction b) {
+  // int frac1 = gcf(this->numerator, b.denominator);
+  // int frac2 = gcf(b.numerator, this->denominator);
+  fraction f = fraction((this->numerator) * (b.numerator),
+                        (this->denominator) * (b.denominator));
+  f.reduce();
+  return f;
+}
+
+fraction fraction::operator/(fraction b) {
+  fraction swap = fraction(b.denominator, b.numerator);
+  return (*this) * swap;
+}
+
+fraction fraction::operator+(fraction b) {
+  int lcm = (this->denominator / gcf(this->denominator, b.denominator)) *
+            b.denominator;
+  int mult1 = lcm / this->denominator;
+  int mult2 = lcm / b.denominator;
+  fraction f = fraction(this->numerator * mult1 + b.numerator * mult2, lcm);
+  f.reduce();
+  return f;
+}
+
+fraction fraction::operator-(fraction b) {
+  fraction neg = fraction(-b.numerator, b.denominator);
+  return (*this) + neg;
+}
+
+ostream &operator<<(ostream &os, fraction f) {
+
+  if (f.denominator == 1) {
+    os << '(' << f.numerator << ')';
+  } else if (f.denominator == -1) {
+    os << '(' << -f.numerator << ')';
+  } else {
+    os << '(' << f.numerator << '/' << f.denominator << ')';
+  }
+  return os;
+}
+
+void fraction::reduce() {
+  int gcd = gcf(this->numerator, this->denominator);
+  if (this->numerator < 0 && this->denominator < 0) {
+    this->numerator = abs(this->numerator);
+    this->denominator = abs(this->denominator);
+  }
+  this->numerator = this->numerator / gcd;
+  this->denominator = this->denominator / gcd;
+}
+
+void check_char(istream &is, char c) {
+  char input;
+  is >> input;
+  if (c != input) {
+    is.putback(input);
+    is.setstate(ios::badbit);
+  }
+}
+
+istream &operator>>(istream &is, fraction &f) {
+  fraction g;
+  check_char(is, '(');
+  is >> g.numerator;
+  check_char(is, '/');
+  is >> g.denominator;
+  check_char(is, ')');
+  if (is) {
+    f = g;
+    f.reduce();
+  }
+  return is;
+}
+
+fraction::~fraction() { /* void */
+}
