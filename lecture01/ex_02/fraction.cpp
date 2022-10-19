@@ -27,8 +27,6 @@ int gcf(int a, int b) {
 fraction::fraction(int num, int denom) : numerator(num), denominator(denom) {}
 
 fraction fraction::operator*(fraction b) {
-  // int frac1 = gcf(this->numerator, b.denominator);
-  // int frac2 = gcf(b.numerator, this->denominator);
   fraction f = fraction((this->numerator) * (b.numerator),
                         (this->denominator) * (b.denominator));
   f.reduce();
@@ -81,7 +79,8 @@ void check_char(istream &is, char c) {
   char input;
   is >> input;
   if (c != input) {
-    is.putback(input);
+    is.putback(input); // Attempts to decrease the current location in the
+                       // stream by one character.
     is.setstate(ios::badbit);
   }
 }
@@ -98,6 +97,13 @@ istream &operator>>(istream &is, fraction &f) {
     f.reduce();
   }
   return is;
+}
+
+bool fraction::operator==(fraction b) {
+  this->reduce();
+  b.reduce();
+  return (this->numerator == b.numerator) &&
+         (this->denominator == b.denominator);
 }
 
 fraction::~fraction() { /* void */

@@ -21,6 +21,7 @@ public:
   fraction operator-(fraction b);
   fraction operator*(fraction b);
   fraction operator/(fraction b);
+  bool operator==(fraction b);
   void reduce();
   friend ostream &operator<<(ostream &os, fraction f);
   friend istream &operator>>(istream &is, fraction &f);
