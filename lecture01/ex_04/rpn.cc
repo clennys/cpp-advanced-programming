@@ -1,28 +1,25 @@
 #include <iostream>
 #include <ostream>
 #include <sstream>
-#include <stack>
 #include <string>
+#include <vector>
 
 using namespace std;
 
-bool empty_stack(stack<int> stack);
+bool empty_vector(vector<int> vector);
 
-void print_stack(stack<int> stack) {
-  int counter = stack.size();
-	if (empty_stack(stack)) {
-		return;
-	}
-  while (!stack.empty()) {
-    cout << counter << ": " << stack.top() << endl;
-    stack.pop();
-    counter--;
+void print_vector(vector<int> vector) {
+  if (vector.empty()) {
+    return;
+  }
+  for (int i = 0; i < vector.size(); i++) {
+    cout << i << ": " << vector[i] << endl;
   }
 }
 
-bool empty_stack(stack<int> stack) {
-  if (stack.empty()) {
-    cout << "Stack is empty." << endl;
+bool empty_vector(vector<int> vector) {
+  if (vector.empty()) {
+    cout << "stack is empty." << endl;
     return true;
   }
   return false;
@@ -41,31 +38,27 @@ int operation(int a, int b, char op) {
   return 0;
 }
 
-int get_pop_item(stack<int> &stack) {
+int pop(vector<int> &vector) {
   int el = 0;
-  el = stack.top();
-  stack.pop();
+  el = vector.back();
+  vector.pop_back();
   return el;
 }
 
-void calc(stack<int> &stack, char op) {
+void calc(vector<int> &vector, char op) {
   int a, b, res;
-  if (!empty_stack(stack)) {
-    a = get_pop_item(stack);
-    if (!empty_stack(stack)) {
-      b = get_pop_item(stack);
-      res = operation(a, b, op);
-    } else {
-			stack.push(a);
-      return;
-    }
+  if (!empty_vector(vector)) {
+    a = pop(vector);
+    b = pop(vector);
+    res = operation(a, b, op);
   } else {
+    vector.push_back(a);
     return;
   }
-  stack.push(res);
+  vector.push_back(res);
 }
 
-void parse_input(string s, stack<int> &stack) {
+void parse_input(string s, vector<int> &vector) {
   char op;
   int num;
   istringstream iss(s);
@@ -76,23 +69,23 @@ void parse_input(string s, stack<int> &stack) {
     } else if (op == 'n') {
       iss >> num;
       if (!iss.fail()) {
-        stack.push(num);
+        vector.push_back(num);
       }
     } else if (op == 'd') {
-      if (!stack.empty()) {
-        stack.pop();
+      if (!vector.empty()) {
+        vector.pop_back();
       } else {
-        cout << "Stack is empty." << endl;
+        cout << "vector is empty." << endl;
       }
 
     } else if (op == '+') {
-      calc(stack, op);
+      calc(vector, op);
     } else if (op == '-') {
-      calc(stack, op);
+      calc(vector, op);
     } else if (op == '*') {
-      calc(stack, op);
+      calc(vector, op);
     } else if (op == '/') {
-      calc(stack, op);
+      calc(vector, op);
     } else {
       cout << "Invalid operator." << endl;
     }
@@ -103,14 +96,14 @@ int main(int argc, char *argv[]) {
 
   char c;
   string input;
-  stack<int> stack;
+  vector<int> vector;
 
   cout << "Welcome, this is a RPN Calculator!" << endl;
   while (true) {
     cout << "Command: ";
     getline(cin, input);
-    parse_input(input, stack);
-    print_stack(stack);
+    parse_input(input, vector);
+    print_vector(vector);
   }
 
   return 0;
