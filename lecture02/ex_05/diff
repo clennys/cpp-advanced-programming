@@ -1,0 +1,34 @@
+1c1
+< 	.file	"c_swap.cc"
+---
+> 	.file	"swap.cc"
+5,7c5,7
+< 	.globl	_Z6c_swapPiS_
+< 	.type	_Z6c_swapPiS_, @function
+< _Z6c_swapPiS_:
+---
+> 	.globl	_Z4swapRiS_
+> 	.type	_Z4swapRiS_, @function
+> _Z4swapRiS_:
+33c33
+< 	.size	_Z6c_swapPiS_, .-_Z6c_swapPiS_
+---
+> 	.size	_Z4swapRiS_, .-_Z4swapRiS_
+80c80
+< 	call	_Z6c_swapPiS_
+---
+> 	call	_Z4swapRiS_
+137,138c137,138
+< 	.type	_GLOBAL__sub_I__Z6c_swapPiS_, @function
+< _GLOBAL__sub_I__Z6c_swapPiS_:
+---
+> 	.type	_GLOBAL__sub_I__Z4swapRiS_, @function
+> _GLOBAL__sub_I__Z4swapRiS_:
+154c154
+< 	.size	_GLOBAL__sub_I__Z6c_swapPiS_, .-_GLOBAL__sub_I__Z6c_swapPiS_
+---
+> 	.size	_GLOBAL__sub_I__Z4swapRiS_, .-_GLOBAL__sub_I__Z4swapRiS_
+157c157
+< 	.quad	_GLOBAL__sub_I__Z6c_swapPiS_
+---
+> 	.quad	_GLOBAL__sub_I__Z4swapRiS_

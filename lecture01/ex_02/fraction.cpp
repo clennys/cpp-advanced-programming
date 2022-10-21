@@ -55,13 +55,13 @@ fraction fraction::operator-(fraction b) {
 
 ostream &operator<<(ostream &os, fraction f) {
 
-  if (f.denominator == 1) {
-    os << '(' << f.numerator << ')';
-  } else if (f.denominator == -1) {
-    os << '(' << -f.numerator << ')';
-  } else {
-    os << '(' << f.numerator << '/' << f.denominator << ')';
-  }
+  // if (f.denominator == 1) {
+  //   os << '(' << f.numerator << ')';
+  // } else if (f.denominator == -1) {
+  //   os << '(' << -f.numerator << ')';
+  // } else {
+  os << '(' << f.numerator << '/' << f.denominator << ')';
+  // }
   return os;
 }
 

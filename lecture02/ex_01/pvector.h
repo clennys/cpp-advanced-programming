@@ -20,7 +20,6 @@ template <typename T> class pvector {
       v.push_back(x);
     }
   }
-
   void writevector() {
     ofstream ofs(filename);
     for (const T &elem : v)
@@ -42,7 +41,7 @@ public:
     }
     return v[index];
   }
-  pvector(const pvector &) = delete;
+  // pvector(const pvector<T> &) = delete;
 };
 
 #endif // !PVECTOR_H_

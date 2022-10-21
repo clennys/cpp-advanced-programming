@@ -19,7 +19,7 @@ template <typename T> class rpn {
   T div(T a, T b) { return b / a; }
 
 public:
-  rpn(pvector<T> &pvec);
+  rpn(string filename);
   ~rpn();
 
   T pop();
@@ -29,10 +29,11 @@ public:
   void print_vector();
 };
 
-template <typename T> rpn<T>::rpn(pvector<T> &pvec) : vec(pvec) {}
+template <typename T> rpn<T>::rpn(string filename) : vec(filename) {}
 
 template <typename T> void rpn<T>::print_vector() {
-  if (vec.size() < 2) {
+  if (vec.size() < 1) {
+    cout << "Stack is empty" << endl;
     return;
   }
   for (int i = 0; i < vec.size(); i++) {
@@ -42,7 +43,7 @@ template <typename T> void rpn<T>::print_vector() {
 
 template <typename T> void rpn<T>::calculation(char op) {
   T a, b, res;
-  if (vec.size() < 2) {
+  if (!vec.size() < 2) {
     a = pop();
     b = pop();
     res = operation(a, b, op);
@@ -66,10 +67,10 @@ template <typename T> void rpn<T>::parse_input(string s) {
         vec.push_back(type);
       }
     } else if (op == 'd') {
-      if (!vec.size() < 2) {
+      if (!vec.size() < 1) {
         vec.pop_back();
       } else {
-        cout << "st is empty." << endl;
+        cout << "stack is empty." << endl;
       }
     } else if (op == '+' || op == '-' || op == '*' || op == '/') {
       calculation(op);
