@@ -47,12 +47,12 @@ int pop(vector<int> &vector) {
 
 void calc(vector<int> &vector, char op) {
   int a, b, res;
-  if (!empty_vector(vector)) {
+  if (!(vector.size() < 2)) {
     a = pop(vector);
     b = pop(vector);
     res = operation(a, b, op);
   } else {
-    vector.push_back(a);
+    cout << "you need at least two numbers on the stack" << endl;
     return;
   }
   vector.push_back(res);
