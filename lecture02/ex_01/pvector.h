@@ -27,8 +27,14 @@ template <typename T> class pvector {
   }
 
 public:
-  pvector(string fname) : filename(fname) { readvector(); }
-  ~pvector() { writevector(); }
+  pvector(string fname) : filename(fname) {
+    cout << "Read data..." << endl;
+    readvector();
+  }
+  ~pvector() {
+    cout << "Write data ... " << endl;
+    writevector();
+  }
   void push_back(const T &el) { v.push_back(el); }
   T back() { return v[v.size() - 1]; }
   void pop_back() { v.pop_back(); }
@@ -41,6 +47,7 @@ public:
     }
     return v[index];
   }
+  void write() { writevector(); }
   // pvector(const pvector<T> &) = delete;
 };
 

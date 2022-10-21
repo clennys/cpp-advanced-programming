@@ -60,6 +60,7 @@ template <typename T> void rpn<T>::parse_input(string s) {
 
   while (iss >> op) {
     if (op == 'q') {
+      vec.write();
       exit(0);
     } else if (op == 'n') {
       iss >> type;
@@ -75,7 +76,7 @@ template <typename T> void rpn<T>::parse_input(string s) {
     } else if (op == '+' || op == '-' || op == '*' || op == '/') {
       calculation(op);
     } else {
-      cout << "Invalid operator.";
+      cout << "Invalid operator." << endl;
     }
   }
 }
