@@ -15,7 +15,7 @@ h: variable implemented elsewhere
 ```cpp
 static double sq(double);
 ```
-h: function declaration
+cc: its used only in one file
 ```cpp
 int count=1;
 ```
@@ -36,6 +36,7 @@ cc: array implementation
 extern "C" void c_swap(int *a, int *b);
 ```
 h: function implemented elsewhere
+"C" use c linkage convention
 ```cpp
 double sqrt(double);
 ```
@@ -51,7 +52,7 @@ h: template declaration
 ```cpp
 namespace { int a; }
 ```
-h & cc: namespace declaration
+h: namespace declaration
 ```cpp
 struct user;
 ```
