@@ -7,8 +7,7 @@ deallocate
 memory
 and
 do
-other
-cleanup
+other\ncleanup
 for
 a
 class
@@ -22,4 +21,8 @@ the
 object
 is
 destroyed.
-Dini Muetter
+YOU
+Dennys
+hut
+YOU Dennys 
+ hut

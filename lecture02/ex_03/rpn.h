@@ -49,6 +49,7 @@ template <typename T> void rpn<T>::calculation(char op) {
     res = operation(a, b, op);
     vec.push_back(res);
   } else {
+    cout << "You need at least two elements on the stack." << endl;
     return;
   }
 }

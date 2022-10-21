@@ -48,7 +48,7 @@ public:
     return v[index];
   }
   void write() { writevector(); }
-  // pvector(const pvector<T> &) = delete;
+  pvector(const pvector<T> &) = delete;
 };
 
 #endif // !PVECTOR_H_
