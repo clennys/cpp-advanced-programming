@@ -3,15 +3,16 @@
 
 class playfield {
 
+public:
   // the size of the field
   const static int width = 7;
   const static int height = 6;
 
   // these elements are used to indicate whether a given position
   // in the playing field is taken by a given player
-  const static char none = '_';
-  const static char player1 = 'X';
-  const static char player2 = 'O';
+  const static char none = 0;
+  const static char player1 = 1;
+  const static char player2 = 2;
 
   // the internal representation of the field
   char rep[playfield::width][playfield::height];
@@ -26,10 +27,10 @@ class playfield {
   // implementation may be changed, interface not
   void reset_board();
 
-public:
   playfield();
   int stoneat(int x, int y) const;
   void insert_stone(int col, char player = player1);
+  char convert_to_ascii(int row, int col);
 
   void printboard();
 };
