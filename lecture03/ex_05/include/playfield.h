@@ -29,7 +29,7 @@ public:
 
   playfield();
   int stoneat(int x, int y) const;
-  void insert_stone(int col, char player = player1);
+  void insert_stone(int col, int player);
   char convert_to_ascii(int row, int col);
 
   void printboard();
