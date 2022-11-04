@@ -1,12 +1,12 @@
-#ifndef HELPER_PLAYER_H_
-#define HELPER_PLAYER_H_
+#ifndef PLAYFIELD_HELP_H_
+#define PLAYFIELD_HELP_H_
 
 #include "playfield.h"
 #include <iostream>
 
 using namespace std;
 
-template <typename F> class traits {
+template <typename F> class playfield_help {
 public:
   static bool valid_input(const F &field, int col) {
     return col > -1 && col < F::width && field.stoneat(col, 0) == F::none;
@@ -61,4 +61,4 @@ public:
   }
 };
 
-#endif // !HELPER_PLAYER_H_
+#endif // !PLAYFIELD_HELP_H_

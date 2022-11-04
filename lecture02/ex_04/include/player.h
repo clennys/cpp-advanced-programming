@@ -1,7 +1,7 @@
 #ifndef PLAYER_H_
 #define PLAYER_H_
 
-#include "traits.h"
+#include "playfield_help.h"
 #include <iostream>
 
 using namespace std;
@@ -18,7 +18,7 @@ template <typename F> struct player {
       int col;
       cout << "Enter column: ";
       cin >> col;
-      if (traits<F>::valid_input(field, col)) {
+      if (playfield_help<F>::valid_input(field, col)) {
         return col;
       } else {
         cout << "Invalid Input: Try again!" << endl;
