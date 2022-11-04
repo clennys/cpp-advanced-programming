@@ -1,5 +1,56 @@
+#include "../include/fraction.h"
+#include "../include/pset.h"
+#include "../include/pvector.h"
 #include <iostream>
 
-using namespace std;
+void pvector_int() {
 
-int main(int argc, char *argv[]) { return 0; }
+  pvector<int> pvec("integers.txt");
+
+  for (const int &i : pvec) {
+    cout << i << endl;
+  }
+
+  int i;
+  cout << "add integer to vector: ";
+  cin >> i;
+  pvec.push_back(i);
+}
+
+void pvector_string() {
+
+  pvector<string> pvec("string.txt");
+
+  for (const string &s : pvec) {
+    cout << s << endl;
+  }
+
+  string s;
+  cout << "add string to vector: ";
+  getline(cin, s); // ignore \n
+  getline(cin, s);
+  pvec.push_back(s);
+}
+
+void pset_int() {
+
+  pset<int> pset("pset.txt");
+
+  for (const int &i : pset) {
+    cout << i << endl;
+  }
+
+  int i;
+  cout << "add integer to set: ";
+  cin >> i;
+  pset.insert(i);
+}
+
+int main() {
+
+  pvector_int();
+  cout << "==================" << endl;
+  pvector_string();
+  cout << "==================" << endl;
+  pset_int();
+}

@@ -1,48 +1,16 @@
-CXX		= g++
-CXXFLAGS= -pedantic-errors -Wall -Wextra -Werror
-LDFLAGS	=
-BUILD	= ./build
-OBJ_DIR	= $(BUILD)/objects
-APP_DIR	= $(BUILD)/apps
-TARGET	= main
-INCLUDE	= -Iinclude/
-SRC		= $(wildcard src/*.cc)
+CCX=g++
+CXXFLAGS=-Wall -Wextra -Werror
 
-OBJECTS	= $(SRC:%.cc=$(OBJ_DIR)/%.o)
-DEPENDENCIES \
-         := $(OBJECTS:.o=.d)
+all: main
 
-all: build $(APP_DIR)/$(TARGET)
+main: main.o fraction.o
+	$(CCX) $(CCXXFLAGS) -o main.out main.o fraction.o
 
-$(OBJ_DIR)/%.o: %.cc
-	@mkdir -p $(@D)
-	$(CXX) $(CXXFLAGS) $(INCLUDE) -c $< -MMD -o $@
+main.o: main.cc rpn.h fraction.h
+	$(CCX) $(CCXXFLAGS) -c main.cc 
 
-$(APP_DIR)/$(TARGET): $(OBJECTS)
-	@mkdir -p $(@D)
-	$(CXX) $(CXXFLAGS) -o $(APP_DIR)/$(TARGET) $^ $(LDFLAGS)
-
--include $(DEPENDENCIES)
-
-.PHONY: all build clean debug release info
-
-build:
-	@mkdir -p $(APP_DIR)
-	@mkdir -p $(OBJ_DIR)
-
-debug: CXXFLAGS += -DDEBUG -g
-debug: all
-
-release: CXXFLAGS += -O2
-release: all
+fraction.o: fraction.cc fraction.h
+	$(CCX) $(CCXXFLAGS) -c fraction.cc
 
 clean:
-	-@rm -rvf $(OBJ_DIR)/*
-	-@rm -rvf $(APP_DIR)/*
-
-info:
-	@echo "[*] Application dir: ${APP_DIR}     "
-	@echo "[*] Object dir:      ${OBJ_DIR}     "
-	@echo "[*] Sources:         ${SRC}         "
-	@echo "[*] Objects:         ${OBJECTS}     "
-	@echo "[*] Dependencies:    ${DEPENDENCIES}"
+	rm -f main.out *.o

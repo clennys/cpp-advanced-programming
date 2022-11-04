@@ -1,6 +1,9 @@
 #ifndef DUMB_POINTER_H_
 #define DUMB_POINTER_H_
 
+#include <iostream>
+using namespace std;
+
 template <typename T> class dumb_pointer {
   T *p;
 

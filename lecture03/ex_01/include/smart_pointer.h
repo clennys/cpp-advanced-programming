@@ -6,7 +6,7 @@ template <typename T> class smart_pointer {
   int *ref;
 
 public:
-  smart_pointer(T *t) : p(t) { *ref = 1; }
+  smart_pointer(T *t) : p(t) { ref = new int(1); }
   smart_pointer(const smart_pointer<T> &t) : p(t.p), ref(t.ref) { add(); }
   T &operator*() { return *p; }
   T *operator->() { return p; }
