@@ -14,12 +14,12 @@ class pvector : public vector<T> {
 
   void read() {
     ifstream ifs(f);
-    for (;;) {
-      T el;
-      P::read(ifs, el);
+    while (true) {
+      T input;
+      P::read(ifs, input);
       if (!ifs.good())
         break;
-      vector<T>::push_back(el);
+      vector<T>::push_back(input);
     }
   }
 
