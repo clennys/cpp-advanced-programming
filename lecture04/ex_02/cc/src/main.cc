@@ -59,8 +59,8 @@ int main(int argc, char *argv[]) {
   }
   string type(argv[1]);
 
-  double time;
-  bool found;
+  double time = 0.0;
+  bool found = false;
   if (type == "int") {
     cout << "Populate vector with " << SIZE << " elements..." << endl;
     vector<int> collection_int = readvector<int>("int.txt");

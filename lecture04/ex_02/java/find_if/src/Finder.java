@@ -5,7 +5,7 @@ public class Finder {
         E e;
 
         while (iter.hasNext()) {
-            e = (E) iter.next();
+            e = iter.next();
             if (matcher.match(e)) {
                 return e;
             }

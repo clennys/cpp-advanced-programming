@@ -26,15 +26,21 @@ int main() {
   auto i = next(fst, 2);
   print(fst, lst, i);
 
+  auto fst0 = next(fst, 3);
+  print(fst0, lst, i);
+
   // not random iterator
   //
-  cout << "With forward iterator." << endl;
+  cout << endl << "With forward iterator." << endl;
   list<int> l = {1, 2, 3, 4, 5};
 
   auto lfst = l.begin();
   auto llst = l.end();
   auto li = next(lfst, 2);
   print(lfst, llst, li);
+
+  auto lfist0 = next(lfst, 3);
+  print(lfist0, llst, li);
 
   return 0;
 }
