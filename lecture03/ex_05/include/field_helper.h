@@ -1,19 +1,26 @@
-#ifndef DENNYS_AI_
-#define DENNYS_AI_
+#ifndef FIELD_HELPER_H_
+#define FIELD_HELPER_H_
 
-#include "field_helper.h"
-#include <algorithm>
 #include <iostream>
 #include <vector>
 
-#define MAX_SCORE 1000000
-#define MIN_SCORE -1000000
-
 using namespace std;
 
-template <typename F> class AI {
+template <typename F> class field_helper {
 public:
-  bool has_won(const F &field, int player) {
+  static bool valid_input(const F &field, int col) {
+    return col > -1 && col < F::width && field.stoneat(col, 0) == F::none;
+  }
+  static bool is_full(const F &field) {
+    for (int i = 0; i < F::width; ++i) {
+      if (field.stoneat(i, 0) == F::none) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  static bool has_won(const F &field, int player) {
     for (int col = 0; col < F::width; ++col) {
       for (int row = 0; row < F::height; ++row) {
         // horizontal
@@ -57,7 +64,7 @@ public:
     return false;
   }
 
-  vector<vector<int>> possible_moves(const F &field) {
+  static vector<vector<int>> possible_moves(const F &field) {
     vector<vector<int>> moves;
     for (int col = 0; col < F::width; ++col) {
       if (field.stoneat(col, 0) == F::none) {
@@ -79,7 +86,7 @@ public:
     }
     return moves;
   }
-  int heuristic(vector<int> quintet, int pl) {
+  static int heuristic(vector<int> quintet, int pl) {
     int bad = 0;
     int score = 0;
     int good = 0;
@@ -110,7 +117,7 @@ public:
     return score;
   }
 
-  int position_score(const F &field, int pl) {
+  static int position_score(const F &field, int pl) {
     int score = 0;
     for (int col = 0; col < F::width; ++col) {
       for (int row = 0; row < F::height - 3; ++row) {
@@ -172,119 +179,16 @@ public:
 
     return score;
   }
-  bool winning_move(F field, int pl) {
+  static bool winning_move(F field, int pl) {
     vector<vector<int>> moves = possible_moves(field);
     for (unsigned int i = 0; i < moves.size(); ++i) {
       field.insert_stone(moves[i][0], pl);
-      if (has_won(field, pl)) {
+      if (field_helper<F>::has_won(field, pl)) {
         return true;
       }
     }
     return false;
   }
-
-  int minimax(F &field, int depth, int height, bool max_player, int alpha,
-              int beta, int pl) {
-    int opponent = pl == 1 ? 2 : 1;
-    int value = 0;
-    int bestVal = 0;
-    if (depth == height) {
-      return position_score(field, pl);
-    }
-    if (max_player) {
-      bestVal = MIN_SCORE;
-      if (has_won(field, opponent)) {
-        return bestVal;
-      }
-      vector<vector<int>> moves = possible_moves(field);
-      for (unsigned int i = 0; i < moves.size(); ++i) {
-        F field_copy = field;
-        field_copy.insert_stone(moves[i][0], pl);
-        value = minimax(field_copy, depth + 1, height, false, alpha, beta, pl);
-        bestVal = max(bestVal, value);
-        alpha = max(alpha, bestVal);
-        if (beta <= alpha) {
-          break;
-        }
-      }
-      return bestVal;
-    } else {
-      bestVal = MAX_SCORE;
-      if (has_won(field, pl)) {
-        return bestVal;
-      }
-      vector<vector<int>> moves = possible_moves(field);
-      for (unsigned int i = 0; i < moves.size(); ++i) {
-        F field_copy = field;
-        field_copy.insert_stone(moves[i][0], opponent);
-        value = minimax(field_copy, depth + 1, height, true, alpha, beta, pl);
-        bestVal = min(bestVal, value);
-        alpha = min(alpha, bestVal);
-        if (beta <= alpha) {
-          break;
-        }
-      }
-      return bestVal;
-    }
-  }
-
-  int which_players_turn(const F &field) {
-    int counter;
-    for (int col = 0; col < F::width; ++col) {
-      for (int row = 0; row < F::height; ++row) {
-        if (field.stoneat(col, row) != F::none) {
-          ++counter;
-        }
-      }
-    }
-    if (counter % 2 == 1) {
-      return 1;
-    } else {
-      return 2;
-    }
-  }
-
-  int play(const F &field) {
-    vector<vector<int>> moves = possible_moves(field);
-    vector<int> scores;
-    int pl = which_players_turn(field);
-    int opponent = pl == 1 ? 2 : 1;
-
-    for (unsigned int i = 0; i < moves.size(); ++i) {
-      F field_copy = field;
-      field_copy.insert_stone(moves[i][0], pl);
-      if (has_won(field_copy, pl)) {
-        return moves[i][0];
-      }
-    }
-
-    for (unsigned int i = 0; i < moves.size(); ++i) {
-      F field_copy = field;
-      field_copy.insert_stone(moves[i][0], opponent);
-      if (has_won(field_copy, opponent)) {
-        return moves[i][0];
-      }
-    }
-
-    for (unsigned int i = 0; i < moves.size(); ++i) {
-      F field_copy = field;
-      field_copy.insert_stone(moves[i][0], pl);
-      if (pl == 1) {
-        scores.push_back(
-            minimax(field_copy, 0, 3, true, MIN_SCORE, MAX_SCORE, pl));
-      } else {
-        scores.push_back(
-            minimax(field_copy, 0, 3, false, MIN_SCORE, MAX_SCORE, pl));
-      }
-    }
-
-    int max_element_index =
-        max_element(scores.begin(), scores.end()) - scores.begin();
-
-    int move_col = moves[max_element_index][0];
-
-    return move_col;
-  }
 };
 
-#endif // !DENNYS_AI_
+#endif // !FIELD_HELPER_H_

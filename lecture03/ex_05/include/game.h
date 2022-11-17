@@ -1,8 +1,8 @@
 #ifndef GAME_H_
 #define GAME_H_
 
+#include "field_helper.h"
 #include "playfield.h"
-#include "traits.h"
 #include <iostream>
 
 using namespace std;
@@ -21,7 +21,7 @@ public:
   }
 
   void run() {
-    while (!traits<F>::is_full(field)) {
+    while (!field_helper<F>::is_full(field)) {
       field.printboard();
       current_char = current_player == playfield::player1 ? 'X' : 'O';
       cout << "Player with the " << current_char << " stones. Your turn!"
@@ -29,7 +29,7 @@ public:
       current_player == playfield::player1
           ? field.insert_stone(player1.play(field), current_player)
           : field.insert_stone(player2.play(field), current_player);
-      if (traits<F>::has_won(field, current_player)) {
+      if (field_helper<F>::has_won(field, current_player)) {
         field.printboard();
         cout << "Congrats Player with the " << current_char
              << " stones. You Won!";
