@@ -36,6 +36,9 @@ debug: all
 release: CXXFLAGS += -O2
 release: all
 
+optimized: CXXFLAGS += -O3
+optimized: all
+
 clean:
 	-@rm -rvf $(OBJ_DIR)/*
 	-@rm -rvf $(APP_DIR)/*
