@@ -1,7 +1,8 @@
-#ifndef PLAYER_H_
-#define PLAYER_H_
+#ifndef HUMAN_PLAYER_H_
+#define HUMAN_PLAYER_H_
 
 #include "field_helper.h"
+#include "player.h"
 #include "playfield.h"
 #include <algorithm>
 #include <iostream>
@@ -9,25 +10,16 @@
 
 using namespace std;
 
-template <typename F> struct player {
+class human_player : public player {
   // returns the column where the player decides to insert his
   // stone
   // F is the playfield which may be any playfield implementing
   // the stoneat method, if you expect a different class because
   // you need methods to verify whether the opponent can win,
   // copy the field into the class that you expect.
-  int play(const F &field) {
-    while (true) {
-      int col;
-      cout << "Enter column: ";
-      cin >> col;
-      if (field_helper<F>::valid_input(field, col)) {
-        return col;
-      } else {
-        cout << "Invalid Input: Try again!" << endl;
-      }
-    }
-  }
+public:
+  human_player();
+  virtual int play(const playfield &field) override;
 };
 
-#endif // !PLAYER_H_
+#endif // !HUMAN_PLAYER_H_

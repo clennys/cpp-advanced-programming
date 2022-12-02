@@ -1,11 +1,11 @@
-#include "../include/playfield.h"
+#include "../include/dennys_playfield.h"
 #include <iostream>
 
 using namespace std;
 
-playfield::playfield() { reset_board(); }
+dennys_playfield::dennys_playfield() { reset_board(); }
 
-void playfield::reset_board() {
+void dennys_playfield::reset_board() {
   for (int i = 0; i < width; ++i) {
     for (int j = 0; j < height; ++j) {
       rep[i][j] = none;
@@ -13,9 +13,9 @@ void playfield::reset_board() {
   }
 }
 
-int playfield::stoneat(int x, int y) const { return rep[x][y]; }
+int dennys_playfield::stoneat(int x, int y) const { return rep[x][y]; }
 
-char playfield::convert_to_ascii(int row, int col) {
+char dennys_playfield::convert_to_ascii(int row, int col) {
   int input = rep[row][col];
   if (input == player1) {
     return 'X';
@@ -25,7 +25,7 @@ char playfield::convert_to_ascii(int row, int col) {
   return '_';
 }
 
-void playfield::printboard() {
+void dennys_playfield::printboard() {
   cout << endl << "  0   1   2   3   4   5   6" << endl;
   for (int i = 0; i < height; ++i) {
     cout << "| ";
@@ -36,7 +36,7 @@ void playfield::printboard() {
   }
 }
 
-void playfield::insert_stone(int col, int pl) {
+void dennys_playfield::insert_stone(int col, int pl) {
   for (int row = 0; row < height; ++row) {
     int current = stoneat(col, row);
     if (current == player1 || current == player2) {

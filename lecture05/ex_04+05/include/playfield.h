@@ -14,9 +14,6 @@ public:
   const static char player1 = 1;
   const static char player2 = 2;
 
-  // the internal representation of the field
-  char rep[playfield::width][playfield::height];
-
   // return the stone (none/player1/player2) at position(x, y)
   // 0 <= x <= width
   // 0 <= y <= height
@@ -25,14 +22,8 @@ public:
   // if we insert a stone in a new game in column i,
   // it lands at (i, height-1)
   // implementation may be changed, interface not
-  void reset_board();
-
-  playfield();
-  int stoneat(int x, int y) const;
-  void insert_stone(int col, int player);
-  char convert_to_ascii(int row, int col);
-
-  void printboard();
+  virtual int stoneat(int x, int y) const = 0;
+  virtual ~playfield(){};
 };
 
 #endif // !PLAYFIELD_H_
