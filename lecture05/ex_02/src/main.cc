@@ -20,7 +20,7 @@ void regex_spellchecker(string file, string dict) {
       smatch match = *i;
       string match_str = match.str();
 
-      for (auto &el : d) {
+      for (const string &el : d) {
         regex match_dict(el);
         if (regex_match(match_str, match_dict)) {
           cout << "Found " << match_str << " in dictionary" << endl;
