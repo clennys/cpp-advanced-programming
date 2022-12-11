@@ -1,4 +1,3 @@
-
 #include "../include/dennys_ai.h"
 #include "../include/copy_field.h"
 #include <algorithm>
