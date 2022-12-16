@@ -7,6 +7,7 @@
 #include <ostream>
 #include <sstream>
 #include <stack>
+#include <stdexcept>
 #include <string>
 
 using namespace std;
@@ -37,15 +38,15 @@ template <typename T> class rpn {
   void max(T a, T b) {
     push(b);
     push(a);
-    cerr << endl
-         << "MAX Not supported due to type not being comparable!" << endl;
+    throw invalid_argument(
+        "MAX Not supported due to type not being comparable!");
   }
 
   void min(T a, T b) {
     push(b);
     push(a);
-    cerr << endl
-         << "MIN Not supported due to type not being comparable!" << endl;
+    throw invalid_argument(
+        "Min Not supported due to type not being comparable!");
   }
 
 public:
@@ -112,9 +113,17 @@ public:
     } else if (op == '*') {
       mult(a, b);
     } else if (op == 'x') {
-      max(a, b);
+      try {
+        max(a, b);
+      } catch (const invalid_argument &ex) {
+        cout << ex.what() << endl;
+      }
     } else if (op == 'm') {
-      min(a, b);
+      try {
+        min(a, b);
+      } catch (const invalid_argument &ex) {
+        cout << ex.what() << endl;
+      }
     } else {
       div(a, b);
     }
