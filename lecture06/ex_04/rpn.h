@@ -2,7 +2,6 @@
 #define RPN_H_
 
 #include "../../lecture02/ex_01/pvector.h"
-#include "maxmin_traits.h"
 #include <iostream>
 #include <ostream>
 #include <sstream>
