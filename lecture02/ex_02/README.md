@@ -4,6 +4,7 @@
 char ch;
 ```
 h & cc: variable declaration can be in both
+
 ```cpp
 string s;
 ```
