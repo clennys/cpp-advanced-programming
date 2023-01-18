@@ -1999,7 +1999,7 @@ int main(...) {
 		{ lock_guard lock(mtx); ++cnt; }
 		cout << c;
 	} } }
-		```
+	```
 - Async Executions, Futures
 	- Asynchronous execution is provided by the async function
 	- Async is clever enough to know the platform and only executes the function in a separate thread if beneficial on the platform
@@ -2017,40 +2017,8 @@ template <typename Iter>
 		}
 		return sum;
 }
-	```
+```	
 ### Advanced Input and Output
-- I/O System
-![I/O System](/media/iosystem.png)
-	- Check the stream after input and output operations
-	- Raise an exception as soon as an error occurs
-		- ios::good - As the name suggests, all is fine
-		- ios::fail - The last operation has failed but no characters have been lost
-		- ios::bad - The last operation failed Characters may have been lost
-		- ios::eof - End of file
-	- By default errors are handled without exceptions
-	- The exceptions members allow to change this
-- Standard Manipulators
-	- Normally 
-	```cpp
-	cin.setf(ios::oct, ios::basefield);
-	cout.setf(ios::hex, ios::basefield);
-	```
-	- With Standard Manipulators
-	```cpp
-	cout << "dec:" << dec << i
-		 << " hex:" << hex << i
-		 << endl;
-	```
-- The stream buffer
-	- Each stream has an underlying stream buffer
-		- A stream buffer represents a series of characters
-		- Can be obtained with `rdbuf()`
-		- Can be obtained and set with `rdbuf(...)`
-	- Output stream buffer
-	![Output Stream Buffer](/media/outputstreambuffer.png?raw=true)
-	- Input stream buffer
-	![Input Stream Buffer](/media/inputstreambuffer.png?raw=true)
-
 
 
 
