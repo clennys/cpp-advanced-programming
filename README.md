@@ -324,8 +324,6 @@ auto fst = being();
 
 ![Iterator Types](/media/itertypes.png?raw=true)
 
-![Complexity Guarantees](/media/compguar.png?raw=true)
-
 ## Lecture 2
 
 ### Templates
@@ -2004,20 +2002,20 @@ int main(...) {
 	- Asynchronous execution is provided by the async function
 	- Async is clever enough to know the platform and only executes the function in a separate thread if beneficial on the platform
 ```cpp
-template <typename Iter>
-	void parsum(Iter begin, Iter end) {
-		int sum=0, sz=end-begin;
-		if (sz<1000) {
-			while (begin!=end) sum+=*begin++;
-		} else {
-			mid=begin+sz/2;
-			auto handle=async([=]{ return parsum(begin,mid); });
-			sum+=parsum(mid, end);
-			sum+=handle.get();
-		}
-		return sum;
-}
-	```
+	template <typename Iter>
+		void parsum(Iter begin, Iter end) {
+			int sum=0, sz=end-begin;
+			if (sz<1000) {
+				while (begin!=end) sum+=*begin++;
+			} else {
+				mid=begin+sz/2;
+				auto handle=async([=]{ return parsum(begin,mid); });
+				sum+=parsum(mid, end);
+				sum+=handle.get();
+			}
+			return sum;
+	}
+```
 ### Advanced Input and Output
 - I/O System
 ![I/O System](/media/iosystem.png)
@@ -2050,9 +2048,6 @@ template <typename Iter>
 	![Output Stream Buffer](/media/outputstreambuffer.png?raw=true)
 	- Input stream buffer
 	![Input Stream Buffer](/media/inputstreambuffer.png?raw=true)
-
-
-
 
 ## Credits
 Huge thanks to [@arminveres](https://www.github.com/arminveres), who wrote the inital version of this summary.
