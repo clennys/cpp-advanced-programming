@@ -4,34 +4,34 @@
 
 | Exercise   | Topic	    |
 | ----------- | ----------- |
-| ![L1.1](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture01/ex_01) | Hello World and Text file converter |
-| ![L1.2](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture01/ex_02)| Fraction type |
-| ![L1.3](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture01/ex_03)| Simple Spell Checker |
-| ![L1.4](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture01/ex_04)| RPN (Reverse Polish Notation Calculator) |
-| ![L1.5](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture01/ex_05)| Inline functions |
-| ![L2.1](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture02/ex_01)| Persistent vector |
-| ![L2.2](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture02/ex_02)| header or implementation file |
-| ![L2.3](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture02/ex_03)| Template-based RPN |
-| ![L2.4](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture02/ex_04)| Connect four |
-| ![L2.5](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture02/ex_05)| reference vs pointer under the hood  |
-| ![L3.1](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture03/ex_01)| Emulating pointers  |
-| ![L3.2](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture03/ex_02)| Persister trait and Persistent set  |
-| ![L3.3](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture03/ex_03)| RPN<complex>  |
-| ![L3.4](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture03/ex_04)| upgraded spell checker  |
-| ![L3.5 + L4.1](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture03/ex_05)| Connect four with minimax |
-| ![L4.2](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture04/ex_02)| find_if in C++ and Java |
-| ![L4.3](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture04/ex_03)| Implement a range(10,20) class |
-| ![L4.4](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture04/ex_04)| Merge STL Containers |
-| ![L4.5](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture04/ex_05)| Iterator lies between iterators |
-| ![L5.1](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture05/ex_01)| Reimplement your merge function with std::merge and std::back_inserter |
-| ![L5.2](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture05/ex_02)| Spell Checker with Regular Expressions |
-| ![L5.3](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture05/ex_03)| Squares and Rectangles (LSP) |
-| ![L5.4 + L5.5](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture05/ex_04%2B05)| Connect 4 with Inheritance and Factory for Computer Player |
-| ![L5.6](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture05/ex_06)| Inheritance Construction and Destruction |
-| ![L6.1](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture06/ex_01)| Locker Class |
-| ![L6.2](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture06/ex_02)| Metaprogramming |
-| ![L6.3](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture06/ex_03)| Reimplement between with enable_if |
-| ![L6.4](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture06/ex_04)| RPN Calculator with Concepts |
+| [L1.1](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture01/ex_01) | Hello World and Text file converter |
+| [L1.2](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture01/ex_02)| Fraction type |
+| [L1.3](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture01/ex_03)| Simple Spell Checker |
+| [L1.4](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture01/ex_04)| RPN (Reverse Polish Notation Calculator) |
+| [L1.5](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture01/ex_05)| Inline functions |
+| [L2.1](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture02/ex_01)| Persistent vector |
+| [L2.2](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture02/ex_02)| header or implementation file |
+| [L2.3](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture02/ex_03)| Template-based RPN |
+| [L2.4](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture02/ex_04)| Connect four |
+| [L2.5](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture02/ex_05)| reference vs pointer under the hood  |
+| [L3.1](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture03/ex_01)| Emulating pointers  |
+| [L3.2](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture03/ex_02)| Persister trait and Persistent set  |
+| [L3.3](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture03/ex_03)| RPN<complex>  |
+| [L3.4](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture03/ex_04)| upgraded spell checker  |
+| [L3.5 + L4.1](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture03/ex_05)| Connect four with minimax |
+| [L4.2](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture04/ex_02)| find_if in C++ and Java |
+| [L4.3](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture04/ex_03)| Implement a range(10,20) class |
+| [L4.4](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture04/ex_04)| Merge STL Containers |
+| [L4.5](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture04/ex_05)| Iterator lies between iterators |
+| [L5.1](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture05/ex_01)| Reimplement your merge function with std::merge and std::back_inserter |
+| [L5.2](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture05/ex_02)| Spell Checker with Regular Expressions |
+| [L5.3](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture05/ex_03)| Squares and Rectangles (LSP) |
+| [L5.4 + L5.5](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture05/ex_04%2B05)| Connect 4 with Inheritance and Factory for Computer Player |
+| [L5.6](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture05/ex_06)| Inheritance Construction and Destruction |
+| [L6.1](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture06/ex_01)| Locker Class |
+| [L6.2](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture06/ex_02)| Metaprogramming |
+| [L6.3](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture06/ex_03)| Reimplement between with enable_if |
+| [L6.4](https://github.com/devnnys/cpp-advanced-programming/tree/main/lecture06/ex_04)| RPN Calculator with Concepts |
 
 ## TOC
 
